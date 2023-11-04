@@ -1,5 +1,6 @@
 (async function(){
-    function addToList(list,weatherInfo){//`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`weatherInfo.icon[i]
+
+    function addToList(list,weatherInfo){
         list.innerHTML = `<ol>${weatherInfo.weather
             .map((el,i)=>`<li>${el}</li><img src = 'https://openweathermap.org/img/wn/${weatherInfo.icon[i]}@2x.png'>`).join('')}</ol>`
     }
@@ -14,8 +15,15 @@
             await items.push(`Погода в ${weather.name} ${weather.main.temp}˚`);
             await icons.push(iconWeather)
         }else{
-            await items.push(`Погода в ${weather.name} ${weather.main.temp}˚`);
-            await icons.push(iconWeather)
+            if(items.length >= 5){
+                items.pop(items[items.length-1])
+                icons.pop(icons[icons.length-1])
+                items.unshift(`Погода в ${weather.name} ${weather.main.temp}˚`);
+                icons.unshift(iconWeather)
+            }else{
+                await items.push(`Погода в ${weather.name} ${weather.main.temp}˚`);
+                await icons.push(iconWeather)
+            }
         }
         addToList(list,weatherInfo);
     }
