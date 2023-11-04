@@ -10,7 +10,6 @@
         addToList(list,items)
     }
     const items = [];
-    //faddgaefw
     const form = document.querySelector('form')
     form.addEventListener('submit',(ev) => {
         ev.preventDefault();
@@ -19,9 +18,8 @@
         const input = formElement.querySelector('input');
         const value = input.value;
         input.value = '';
-        
+
         const list = formElement.querySelector('div');
         getWeather(value,items,list)
-        
     })
 })();
