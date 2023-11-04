@@ -3,6 +3,7 @@
         list.innerHTML = `<ol>${items.map((el)=>`<li>${el}</li>`).join('')}</ol>`
     }
     const items = [];
+    //faddgaefw
     const form = document.querySelector('form')
     form.addEventListener('submit',(ev) => {
         ev.preventDefault();
@@ -13,7 +14,6 @@
         input.value = '';
         items.push(value)
         const list = formElement.querySelector('div');
-        console.log(list)
         addToList(list,items)
     })
 })();
